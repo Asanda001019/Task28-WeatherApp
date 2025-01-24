@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { FaThermometerEmpty } from 'react-icons/fa';
-import { BiSolidDropletHalf } from 'react-icons/bi';
-import { FiWind } from 'react-icons/fi';
-import { GiSunrise, GiSunset } from 'react-icons/gi';
-import { MdKeyboardArrowUp, MdKeyboardArrowDown } from 'react-icons/md';
+import Icon from 'react-native-vector-icons/FontAwesome'; // For Real Feel
+import IconDroplet from 'react-native-vector-icons/MaterialCommunityIcons'; // For Humidity
+import IconWind from 'react-native-vector-icons/FontAwesome5'; // For Wind
+import IconSunrise from 'react-native-vector-icons/FontAwesome'; // For Sunrise
+import IconSunset from 'react-native-vector-icons/FontAwesome'; // For Sunset
+import IconArrowUp from 'react-native-vector-icons/MaterialIcons'; // For High
+import IconArrowDown from 'react-native-vector-icons/MaterialIcons'; // For Low
 
 const Temp = ({ weather: { details, icon, temp, temp_min, temp_max, sunrise, sunset, speed, humidity, feels_like } }) => {
     return (
@@ -13,15 +15,15 @@ const Temp = ({ weather: { details, icon, temp, temp_min, temp_max, sunrise, sun
             <Image source={{ uri: icon }} style={styles.icon} />
             <Text style={styles.temp}>{`${temp.toFixed()}°`}</Text>
             <View style={styles.detailsContainer}>
-                <Detail icon={FaThermometerEmpty} title="Real Feel" value={`${feels_like.toFixed()}°`} />
-                <Detail icon={BiSolidDropletHalf} title="Humidity" value={`${humidity.toFixed()}%`} />
-                <Detail icon={FiWind} title="Wind" value={`${speed.toFixed()} km/h`} />
+                <Detail icon={Icon} title="Real Feel" value={`${feels_like.toFixed()}°`} />
+                <Detail icon={IconDroplet} title="Humidity" value={`${humidity.toFixed()}%`} />
+                <Detail icon={IconWind} title="Wind" value={`${speed.toFixed()} km/h`} />
             </View>
             <View style={styles.horizontalDetails}>
-                <Detail icon={GiSunrise} title="Sunrise" value={sunrise} />
-                <Detail icon={GiSunset} title="Sunset" value={sunset} />
-                <Detail icon={MdKeyboardArrowUp} title="High" value={`${temp_max.toFixed()}°`} />
-                <Detail icon={MdKeyboardArrowDown} title="Low" value={`${temp_min.toFixed()}°`} />
+                <Detail icon={IconSunrise} title="Sunrise" value={sunrise} />
+                <Detail icon={IconSunset} title="Sunset" value={sunset} />
+                <Detail icon={IconArrowUp} title="High" value={`${temp_max.toFixed()}°`} />
+                <Detail icon={IconArrowDown} title="Low" value={`${temp_min.toFixed()}°`} />
             </View>
         </View>
     );
